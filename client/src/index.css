@@ -6,4 +6,37 @@
 
 body {
   font-family: "Inter", sans-serif;
+  background-color: rgb(255, 255, 255);
+  /* background-image: url("https://3dicons.co/footer-gradient.svg");
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-size: 1000px; */
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+body::-webkit-scrollbar {
+  width: 0px !important;
+}
+
+@media screen and (max-width: 768px) {
+  body {
+    background-size: 700px;
+  }
+}
+
+div[class*="kursor"].kursor--1 {
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 50%;
+}
+
+div[class*="kursor"].kursor--1 + .kursorChild {
+  width: 8px !important;
+  height: 8px !important;
+  border-radius: 50%;
+}
+
+.kursor--text {
+  color: rgb(255, 0, 106);
 }

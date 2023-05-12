@@ -5,10 +5,45 @@
     <link rel="icon" type="image/svg+xml" href="src/assets/favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
-    <title>DALL-E</title>
+    <link rel="stylesheet" href="https://unpkg.com/kursor/dist/kursor.css" />
+    <title>DALL·E</title>
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+
+    <script src="https://unpkg.com/kursor"></script>
+    <script>
+      const cursor = new kursor({
+        type: 1,
+        removeDefaultCursor: true,
+        color: "#000",
+        strokeWidth: 1,
+      })
+
+      document.addEventListener("mousemove", (e) => {
+        const { target } = e
+
+        const bgColor = window
+          .getComputedStyle(target)
+          .getPropertyValue("background-color")
+        const textColor = window
+          .getComputedStyle(target)
+          .getPropertyValue("color")
+        const isBlackBg =
+          bgColor === "rgb(0, 0, 0)" ||
+          bgColor === "#000" ||
+          bgColor === "rgba(0, 0, 0, 0)"
+        const isWhiteText =
+          textColor === "rgb(255, 255, 255)" || textColor === "#fff"
+
+        console.log(bgColor, textColor)
+        if (isBlackBg && isWhiteText) {
+          cursor.color("#fff")
+        } else {
+          cursor.color("#000")
+        }
+      })
+    </script>
   </body>
 </html>

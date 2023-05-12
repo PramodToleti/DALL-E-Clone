@@ -1,0 +1,150 @@
+:root {
+  --active-index: 0;
+}
+
+.navbar {
+  min-height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  position: fixed;
+  z-index: 99;
+  transition: top 0.4s;
+  background-color: #ffffff90;
+  backdrop-filter: blur(20px) saturate(150%);
+  padding: 10px;
+  padding-top: 3px;
+  border-bottom: 1px solid rgb(0, 0, 0, 0.05);
+  transition: transform 0.3s ease-out;
+}
+
+.navbar-hidden {
+  transform: translateY(-100%);
+}
+
+@media screen and (max-width: 767px) {
+  .navbar {
+    display: none;
+  }
+}
+
+.navbar-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 94%;
+  max-width: 1400px;
+  height: 60px;
+}
+
+.nav-links-container {
+  height: 50px;
+  display: flex;
+  align-items: center;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #000;
+  height: 40px;
+  margin-top: 20px;
+  transition: color 0.3s linear;
+}
+
+.nav-link:hover {
+  color: rgb(241, 95, 95);
+}
+
+.website-logo,
+.profile-logo {
+  width: 55px;
+}
+
+.links-container {
+  display: flex;
+  min-width: 380px;
+  justify-content: space-between;
+  height: 100%;
+  align-items: center;
+}
+
+.active-link {
+  border-bottom: 2px solid red;
+}
+
+/* Mobile Navbar */
+
+.mobile-navbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media screen and (min-width: 768px) {
+  .mobile-navbar {
+    display: none;
+  }
+}
+
+.mobile-nav-items {
+  width: 90%;
+  padding-left: 22px;
+  padding-right: 22px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  bottom: 30px;
+  background-color: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(7px) saturate(200%);
+  border-radius: 35px;
+  min-height: 70px;
+  box-shadow: rgba(100, 100, 111, 0.3) 0px 7px 29px 0px;
+  transition: all 0.3s ease-in-out;
+  z-index: 1000;
+}
+
+.mobile-nav-items.visible {
+  opacity: 1;
+}
+
+.mobile-nav-items.hidden {
+  opacity: 0;
+}
+
+.nav-icons {
+  font-size: 28px;
+  color: grey;
+}
+
+.icon-container {
+  height: 75px;
+  min-width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+
+/* .active-item {
+  border-bottom: 2px solid rgb(241, 40, 74);
+} */
+
+.active-icon {
+  font-size: 28px;
+  color: rgb(24, 21, 21) !important;
+}
+
+.underline {
+  height: 2px;
+  width: 30px;
+  background-color: red;
+  position: absolute;
+  bottom: 0.5px;
+  transition: all 0.3s ease-in-out;
+  left: calc(25% * var(--active-index) + (25% - 30px) / 2);
+}

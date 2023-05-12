@@ -1,10 +1,15 @@
-import React from "react"
+import { BrowserRouter as Router } from "react-router-dom"
+import { useEffect } from "react"
+
+import Navbar from "./components/Navbar"
+import AnimatedRoutes from "./components/AnimatedRoutes/AnimatedRoutes"
 
 const App = () => {
   return (
-    <div>
-      <h1>Hello World!</h1>
-    </div>
+    <Router>
+      <Navbar />
+      <AnimatedRoutes />
+    </Router>
   )
 }
 
