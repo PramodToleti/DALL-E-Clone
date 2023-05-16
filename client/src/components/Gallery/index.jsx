@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from "react"
 import { motion } from "framer-motion"
 import Circletype from "circletype"
-import { Link, useNavigate } from "react-router-dom"
+import { Link } from "react-router-dom"
 import { BsArrowDown, BsArrowUpRight } from "react-icons/bs"
 import SwiperCore, { EffectCoverflow, Pagination } from "swiper"
 import { Swiper, SwiperSlide } from "swiper/react"
@@ -44,7 +44,6 @@ const slide_img = [sliderImg1, sliderImg2, sliderImg3, sliderImg4]
 SwiperCore.use([EffectCoverflow, Pagination])
 
 const Gallery = () => {
-  const navigate = useNavigate()
   const [pos, setPos] = useState({ x: 0, y: 0 })
   const textRef = useRef(null)
   const [showScroll, setShowScroll] = useState(false)

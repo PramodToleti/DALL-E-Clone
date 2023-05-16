@@ -588,11 +588,11 @@
   filter: blur(100px);
 }
 
-@media screen and (max-width: 767px) {
+/* @media screen and (max-width: 767px) {
   .images-container-background {
     left: 5%;
   }
-}
+} */
 
 .images-container-background-gradient {
   position: absolute;

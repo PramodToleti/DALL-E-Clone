@@ -139,6 +139,7 @@ const Navbar = () => {
 
       <div className="mobile-navbar">
         <div className={`mobile-nav-items ${visible ? "visible" : "hidden"}`}>
+          {/* <div className="mobile-nav-items"> */}
           <Link to="/">
             <button
               className={
