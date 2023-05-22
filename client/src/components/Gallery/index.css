@@ -3,7 +3,7 @@
   margin-top: 20px;
   width: 100%;
   height: 100%;
-  max-width: 1200px;
+  max-width: 1500px;
   padding: 22px;
   display: flex;
   flex-direction: column;
@@ -32,7 +32,44 @@
 
 @media screen and (min-width: 768px) {
   .hero-container {
-    margin-top: 50px;
+    position: relative;
+    left: -0%;
+    margin-top: 80px;
+  }
+}
+
+.landing-rocket,
+.landing-task {
+  width: 200px;
+  position: absolute;
+  transition: all 0.3s ease-in-out;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+  .landing-rocket {
+    width: 150px;
+    left: -5%;
+    top: -20%;
+  }
+
+  .landing-task {
+    width: 100px;
+    left: 50%;
+    top: 50%;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .landing-rocket {
+    width: 200px;
+    left: -10%;
+    top: -25%;
+  }
+
+  .landing-task {
+    width: 120px;
+    left: -10%;
+    bottom: 20px;
   }
 }
 
@@ -73,6 +110,53 @@
   }
 }
 
+.landing-page-image {
+  position: absolute;
+  right: -20px;
+  top: 30%;
+}
+
+@media screen and (min-width: 878px) and (max-width: 1279px) {
+  .landing-image {
+    width: 400px !important;
+  }
+
+  .hero-title {
+    font-size: 7rem;
+  }
+
+  .hero-description {
+    max-width: 600px;
+  }
+
+  .mesh-gradient-container {
+    left: -10% !important;
+    width: 300px;
+  }
+}
+
+.landing-image {
+  width: 550px;
+  transition: all 0.3s ease-in-out;
+}
+
+@media screen and (max-width: 870px) {
+  .landing-page-image {
+    display: none;
+  }
+}
+
+.landing-image-gradient {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transition: all 0.3s ease-in-out;
+  filter: blur(100px);
+  opacity: 0.4;
+  background-image: linear-gradient(75deg, #fdde80, #ed5a5a);
+  z-index: -1;
+}
+
 /* Mesh Gradient */
 
 /* .mesh-gradient-container {
@@ -88,12 +172,13 @@
   position: absolute;
   width: 700px;
   top: -20%;
-  left: -15%;
+  left: 0%;
   height: 70vh;
   overflow: hidden;
-  filter: blur(70px);
+  filter: blur(100px);
   animation: animate 2s cubic-bezier(0.4, 0.4, 0.4, 0.4);
   z-index: -1;
+  opacity: 0.5 !important;
 }
 
 @keyframes animate {
@@ -138,7 +223,6 @@
   animation-duration: 16s;
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
-  opacity: 0.5;
 }
 
 .mesh-gradient-container div:nth-child(1) {
@@ -183,19 +267,19 @@
 
 @media screen and (min-width: 768px) {
   .mesh-gradient-container div:nth-child(1) {
-    background-color: #ff007895;
+    background-color: #f76caa;
   }
 
   .mesh-gradient-container div:nth-child(2) {
-    background-color: #33a6f3;
+    background-color: #d379f1;
   }
 
   .mesh-gradient-container div:nth-child(3) {
-    background-color: #700df16c;
+    background-color: #71fcb4;
   }
 
   .mesh-gradient-container div:nth-child(4) {
-    background-color: #ff00dd81;
+    background-color: #8bbcfb;
   }
 }
 
@@ -486,7 +570,7 @@
 }
 
 /* Scroll Down */
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 800px) {
   .scroll-container {
     display: none;
   }
@@ -570,8 +654,10 @@
     flex-wrap: wrap;
     justify-content: space-between;
     min-height: 150px;
-    margin-top: 350px;
+    margin-top: 200px;
     position: relative;
+    max-width: 1200px;
+    align-self: center;
   }
 
   .images-container-desktop > div {
@@ -586,6 +672,10 @@
   height: 100%;
   left: -15%;
   filter: blur(100px);
+}
+
+.images-container-desktop {
+  margin-top: 350px;
 }
 
 /* @media screen and (max-width: 767px) {
@@ -822,12 +912,38 @@
   z-index: -1;
   border-radius: 30%;
   border-radius: 40% 70% 20% 70%;
-  opacity: 0.6;
+  opacity: 0.5 !important;
   max-height: 600px;
 }
 
 @media screen and (max-width: 767px) {
   .video-gradient {
+    max-height: 260px;
+    top: 30%;
+    width: 100vw;
+    opacity: 0.8;
+  }
+}
+
+.video-gradient-2 {
+  width: 100%;
+  max-width: 1200px;
+  height: 100%;
+  background-image: linear-gradient(75deg, #c3f7fe, #fae3c8);
+  filter: blur(100px);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  border-radius: 30%;
+  border-radius: 40% 70% 20% 70%;
+  opacity: 0.6;
+  max-height: 600px;
+}
+
+@media screen and (max-width: 767px) {
+  .video-gradient-2 {
     max-height: 260px;
     top: 30%;
     width: 100vw;
@@ -885,6 +1001,14 @@
   background-clip: text;
   -webkit-background-clip: text;
   background-image: linear-gradient(to left, #09cff1, #2fadec, #1366eb);
+  font-weight: 600;
+}
+
+.mixitiles-name {
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  background-image: linear-gradient(to left, #e654ee, #e22fec, #dd0ad3);
   font-weight: 600;
 }
 

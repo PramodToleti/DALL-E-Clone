@@ -11,8 +11,6 @@ const PromptField = () => {
   const [isFocused, setFocused] = useState(false)
   const [promptValue, setPromptValue] = useState(location.state?.prompt || "")
 
-  console.log(location)
-
   useEffect(() => {
     const inputDiv = document.getElementById("input-div")
     const inputDiv2 = document.getElementById("input-div-2")
@@ -76,7 +74,6 @@ const PromptField = () => {
             Surprise Me
           </button>
         </div>
-
         <div className="input-container-mobile" id="input-div">
           <textarea
             className="input-field"
@@ -97,7 +94,6 @@ const PromptField = () => {
             </button>
           )}
         </div>
-
         <div className="prompt-field-desktop">
           <div className="input-container-desktop" id="input-div-2">
             <textarea
@@ -107,7 +103,11 @@ const PromptField = () => {
               spellCheck="false"
               value={promptValue}
               onChange={(e) => setPromptValue(e.target.value)}
-              style={{ resize: "none" }}
+              style={{
+                resize: "none",
+                whiteSpace: "nowrap",
+                overflowX: "auto",
+              }}
             ></textarea>
             <button
               className={`${generateBtnStyles} generate-btn`}
@@ -118,6 +118,20 @@ const PromptField = () => {
           </div>
         </div>
       </div>
+
+      {/* <div
+        style={{
+          marginTop: "2rem",
+        }}
+      >
+        <img
+          src="https://deedy.be/wp-content/uploads/2021/11/60259-web-design-illustration.gif"
+          style={{
+            width: "100%",
+            height: "auto",
+          }}
+        />
+      </div> */}
     </motion.div>
   )
 }

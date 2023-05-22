@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from "react"
 import { motion } from "framer-motion"
 import Circletype from "circletype"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { BsArrowDown, BsArrowUpRight } from "react-icons/bs"
 import SwiperCore, { EffectCoverflow, Pagination } from "swiper"
 import { Swiper, SwiperSlide } from "swiper/react"
@@ -18,6 +18,7 @@ import sliderImg3 from "../../assets/carousel/generated3.png"
 import sliderImg4 from "../../assets/carousel/generated4.png"
 
 import DalleVideo from "../../assets/dalle_video.mp4"
+import DalleVideo2 from "../../assets/dalle_video2.mp4"
 
 const container = {
   hidden: { opacity: 1, scale: 0 },
@@ -44,6 +45,7 @@ const slide_img = [sliderImg1, sliderImg2, sliderImg3, sliderImg4]
 SwiperCore.use([EffectCoverflow, Pagination])
 
 const Gallery = () => {
+  const navigate = useNavigate()
   const [pos, setPos] = useState({ x: 0, y: 0 })
   const textRef = useRef(null)
   const [showScroll, setShowScroll] = useState(false)
@@ -120,8 +122,8 @@ const Gallery = () => {
   //Move gradient mesh on mouse move
   const handleMouseMove = (e) => {
     const rect = e.currentTarget.getBoundingClientRect()
-    const x = (e.clientX - rect.left) / rect.width
-    const y = (e.clientY - rect.top) / rect.height
+    const x = -(e.clientX - rect.left) / rect.width
+    const y = -(e.clientY - rect.top) / rect.height
     setPos({ x, y })
   }
 
@@ -148,6 +150,7 @@ const Gallery = () => {
               <div className="mesh-gradient"></div>
               <div className="mesh-gradient"></div>
             </div>
+
             <div>
               <motion.ul
                 variants={container}
@@ -187,6 +190,69 @@ const Gallery = () => {
                 </button>
               </Link>
             </div>
+          </div>
+          <div className="landing-page-image">
+            <motion.div
+              className="landing-image-gradient"
+              initial={{
+                opacity: 0,
+              }}
+              animate={{
+                opacity: 0.4,
+
+                transition: {
+                  delay: 2,
+                },
+              }}
+              exit={{
+                opacity: 0,
+              }}
+            ></motion.div>
+            <motion.img
+              initial={{
+                opacity: 0,
+                x: -40,
+                y: 40,
+              }}
+              animate={{
+                opacity: 1,
+                x: 0,
+                y: 0,
+                transition: {
+                  delay: 2,
+                },
+              }}
+              exit={{
+                opacity: 0,
+                x: -40,
+                y: 40,
+              }}
+              src="https://res.cloudinary.com/dlpgowt5s/image/upload/v1684754186/landing-rocket_g2jagh.png"
+              className="landing-rocket"
+              alt="rocket"
+            />
+            <motion.img
+              initial={{
+                opacity: 0,
+              }}
+              animate={{
+                opacity: 1,
+                transition: {
+                  delay: 2,
+                },
+              }}
+              exit={{
+                opacity: 0,
+              }}
+              src="https://res.cloudinary.com/dlpgowt5s/image/upload/v1684752153/landing-dalle-1_w9ppiz.png"
+              alt="landing-dalle-1"
+              className="landing-image"
+            />
+            {/* <img
+              src="https://res.cloudinary.com/dlpgowt5s/image/upload/v1684777874/landing-task_k2d9t4.png"
+              alt="landing-task"
+              className="landing-task"
+            /> */}
           </div>
           <button
             className={`scroll-container ${
@@ -229,10 +295,26 @@ const Gallery = () => {
 
         <div className="context-container">
           <div className="context-inner">
-            <h1>
+            <motion.h1
+              initial={{
+                opacity: 0,
+                y: -40,
+              }}
+              whileInView={{
+                opacity: 1,
+                y: 0,
+                transition: {
+                  delay: 0.5,
+                },
+              }}
+              exit={{
+                opacity: 0,
+                y: -40,
+              }}
+            >
               DALL·E 2 can create original, realistic images and art from a text
               description. It can combine concepts, attributes, and styles.
-            </h1>
+            </motion.h1>
 
             <div className="carousel-container">
               <div className="carousel-input">
@@ -279,13 +361,46 @@ const Gallery = () => {
                 styles.
               </p>
             </div>
-            <h1>
+            <motion.h1
+              initial={{
+                opacity: 0,
+                y: -40,
+              }}
+              whileInView={{
+                opacity: 1,
+                y: 0,
+                transition: {
+                  delay: 0.5,
+                },
+              }}
+              exit={{
+                opacity: 0,
+                y: -40,
+              }}
+            >
               In January 2021, OpenAI introduced DALL·E. One year later, our
               newest system, DALL·E 2, generates more realistic images with 4x
               greater resolution.
-            </h1>
+            </motion.h1>
 
-            <div className="image-comparison-container">
+            <motion.div
+              className="image-comparison-container"
+              initial={{
+                opacity: 0,
+                y: -40,
+              }}
+              whileInView={{
+                opacity: 1,
+                y: 0,
+                transition: {
+                  delay: 0.5,
+                },
+              }}
+              exit={{
+                opacity: 0,
+                y: -40,
+              }}
+            >
               <div className="comparison-image">
                 <img
                   src="https://res.cloudinary.com/dlpgowt5s/image/upload/v1683909480/dall-e-1_f2ahxg.jpg"
@@ -300,14 +415,28 @@ const Gallery = () => {
                 />
                 <p style={{ marginTop: "10px" }}>DALL·E 2</p>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
 
         <div className="applications-container">
           <div className="applications-inner">
             <h1>Applications</h1>
-            <div className="video-gradient"></div>
+            <motion.div
+              className="video-gradient"
+              initial={{
+                opacity: 0,
+              }}
+              whileInView={{
+                opacity: 1,
+                transition: {
+                  delay: 1.5,
+                },
+              }}
+              exit={{
+                opacity: 0,
+              }}
+            ></motion.div>
             <div className="video-container">
               <div>
                 <video
@@ -342,10 +471,57 @@ const Gallery = () => {
               </p>
             </div>
           </div>
+          <div className="applications-inner" style={{ marginTop: "80px" }}>
+            <motion.div
+              className="video-gradient-2"
+              initial={{
+                opacity: 0,
+              }}
+              whileInView={{
+                opacity: 1,
+                transition: {
+                  delay: 1.5,
+                },
+              }}
+              exit={{
+                opacity: 0,
+              }}
+            ></motion.div>
+            <div className="video-container">
+              <div>
+                <video
+                  src={DalleVideo2}
+                  loop
+                  muted
+                  autoPlay
+                  className="dalle-video"
+                ></video>
+                <p>Mixtiles</p>
+              </div>
+            </div>
+            <div className="video-text-container">
+              <p>
+                <span className="mixitiles-name">Mixtiles</span> is a
+                fast-growing photo startup. They use software and an easy
+                hanging experience to help millions of people create beautiful
+                photo walls. Mixtiles uses the DALL·E API to create and frame
+                emotionally resonating artwork, by guiding users through a
+                creative process that captures childhood memories, dream
+                destinations, and more.
+              </p>
+              <p className="desktop-video-text">
+                We’re excited to see what our customers will do with DALL·E and
+                what creative ideas they’ll come up with.
+              </p>
+            </div>
+          </div>
           <hr className="seperator" />
           <div className="start-creating-container">
             <h1>Start creating images with DALL·E</h1>
-            <button className="try-dalle-btn">
+            <button
+              className="try-dalle-btn"
+              onClick={() => navigate("/generate")}
+            >
               Try DALL·E <BsArrowUpRight />{" "}
             </button>
           </div>
