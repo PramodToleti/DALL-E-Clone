@@ -6,12 +6,14 @@ import Gallery from "../Gallery"
 import PromptField from "../PromptField"
 import Collections from "../Collections"
 import Profile from "../Profile"
+import LoginPage from "../Login"
 
 const AnimatedRoutes = () => {
   const location = useLocation()
   return (
     <AnimatePresence>
       <Routes location={location} key={location.pathname}>
+        <Route exact path="/login" element={<LoginPage />} />
         <Route exact path="/" element={<Gallery />} />
         <Route exact path="/generate" element={<PromptField />} />
         <Route exact path="/collections" element={<Collections />} />
