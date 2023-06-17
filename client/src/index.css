@@ -40,3 +40,7 @@ div[class*="kursor"].kursor--1 + .kursorChild {
 .kursor--text {
   color: rgb(255, 0, 106);
 }
+
+#root {
+  overflow-x: hidden;
+}

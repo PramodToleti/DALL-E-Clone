@@ -38,7 +38,7 @@ const Navbar = () => {
     setVisible(false)
     timeoutId = setTimeout(() => {
       setVisible(true)
-    }, 3000) // Hide mobile-nav-items after 3 seconds
+    }, 2000) // Hide mobile-nav-items after 3 seconds
     return () => {
       window.removeEventListener("scroll", handleScroll)
       clearTimeout(timeoutId)

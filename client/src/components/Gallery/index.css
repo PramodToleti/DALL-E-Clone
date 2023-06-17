@@ -1,6 +1,5 @@
 .gallery-container {
   font-size: 30px;
-  margin-top: 20px;
   width: 100%;
   height: 100%;
   max-width: 1500px;
@@ -12,12 +11,12 @@
 @media screen and (max-width: 767px) {
   .gallery-container {
     margin-bottom: 20px;
+    margin-top: 20px;
   }
 }
 
 @media screen and (min-width: 768px) {
   .gallery-container {
-    margin-top: 70px;
     min-height: 110vh;
   }
 }
@@ -34,6 +33,7 @@
   .hero-container {
     position: relative;
     left: -0%;
+    margin: 20px;
     margin-top: 80px;
   }
 }
@@ -60,6 +60,11 @@
 }
 
 @media screen and (min-width: 1280px) {
+  .gallery-container {
+    margin-top: 80px;
+    margin-bottom: 180px;
+  }
+
   .landing-rocket {
     width: 200px;
     left: -10%;
@@ -113,7 +118,8 @@
 .landing-page-image {
   position: absolute;
   right: -20px;
-  top: 30%;
+  top: 15%;
+  z-index: -1;
 }
 
 @media screen and (min-width: 878px) and (max-width: 1279px) {
@@ -135,6 +141,12 @@
   }
 }
 
+@media screen and (min-width: 1280px) {
+  .landing-page-image {
+    right: -60px;
+  }
+}
+
 .landing-image {
   width: 550px;
   transition: all 0.3s ease-in-out;
@@ -153,7 +165,7 @@
   transition: all 0.3s ease-in-out;
   filter: blur(100px);
   opacity: 0.4;
-  background-image: linear-gradient(75deg, #fdde80, #ed5a5a);
+  background-image: linear-gradient(75deg, #fcd86d, #ed5a5a);
   z-index: -1;
 }
 
@@ -170,7 +182,7 @@
 
 .mesh-gradient-container {
   position: absolute;
-  width: 700px;
+  width: 800px;
   top: -20%;
   left: 0%;
   height: 70vh;
@@ -178,7 +190,7 @@
   filter: blur(100px);
   animation: animate 2s cubic-bezier(0.4, 0.4, 0.4, 0.4);
   z-index: -1;
-  opacity: 0.5 !important;
+  opacity: 0.6 !important;
 }
 
 @keyframes animate {
@@ -576,14 +588,22 @@
   }
 }
 
+@media (min-width: 801px) {
+  .scroll-container {
+    display: block;
+    z-index: 100;
+  }
+}
+
 .circle-container {
   position: absolute;
-  bottom: 10%;
+  bottom: 6%;
   right: 10%;
   border: none;
   background: transparent;
   opacity: 1;
   transition: 0.3s;
+  z-index: 100;
 }
 
 .circle-container-hide {
@@ -731,7 +751,7 @@
   }
 
   .context-container h1 {
-    font-size: 38px;
+    font-size: 26px;
     margin-bottom: 40px;
   }
 }
@@ -799,7 +819,7 @@
 
   .carousel-desktop-text {
     max-width: 700px;
-    font-size: 28px;
+    font-size: 22px;
     color: transparent;
     background-clip: text;
     -webkit-background-clip: text;
@@ -809,6 +829,112 @@
 
   .carousel-container {
     margin-bottom: 90px;
+  }
+}
+
+.carousel-gradient {
+  height: 500px;
+  width: 500px;
+  background-image: linear-gradient(135deg, #0d075f, #087285);
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  left: -20px;
+  top: -20px;
+  opacity: 0.9;
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  opacity: 0;
+  display: none;
+}
+
+.carousel-controller-prev {
+  font-size: 28px;
+  color: #fff;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  padding: 10px;
+  height: 45px;
+  width: 45px;
+  position: absolute !important;
+  left: -20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-controller-next {
+  font-size: 28px;
+  color: #fff;
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  padding: 10px;
+  height: 45px;
+  width: 45px;
+  position: absolute !important;
+  right: -20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1000px) {
+  .carousel-controller-prev {
+    left: -25px;
+  }
+
+  .carousel-controller-next {
+    right: -25px;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .carousel-controller-prev {
+    left: -35px;
+    font-size: 32px;
+  }
+
+  .carousel-controller-next {
+    right: -35px;
+    font-size: 32px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .carousel-controller-prev {
+    left: -40px;
+    width: 55px;
+    height: 55px;
+  }
+
+  .carousel-controller-next {
+    right: -40px;
+    width: 55px;
+    height: 55px;
+  }
+}
+
+@media screen and (min-width: 1375px) {
+  .carousel-controller-next {
+    right: -5px !important;
+  }
+}
+
+.carousel-controller-prev:hover,
+.carousel-controller-next:hover {
+  background-image: linear-gradient(to right, #12c2e9, #c471ed, #f64f59);
+  border: none;
+}
+
+@media screen and (min-width: 1000px) {
+  .context-container h1 {
+    font-size: 38px;
+  }
+
+  .carousel-desktop-text {
+    font-size: 28px;
   }
 }
 
@@ -833,7 +959,13 @@
   border-radius: 5px;
   padding: 10px;
   font-size: 15px;
-  display: inline-block;
+  width: 90vw !important;
+}
+
+@media screen and (min-width: 768px) {
+  .input-container p {
+    width: 94% !important;
+  }
 }
 
 @media screen and (min-width: 768px) {

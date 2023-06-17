@@ -1,5 +1,4 @@
 import { BrowserRouter as Router } from "react-router-dom"
-import { useEffect } from "react"
 
 import Navbar from "./components/Navbar"
 import AnimatedRoutes from "./components/AnimatedRoutes/AnimatedRoutes"

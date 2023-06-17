@@ -8,9 +8,8 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  position: relative;
+  position: fixed;
   z-index: 99;
-  transition: top 0.4s;
   background-color: #ffffff90;
   backdrop-filter: blur(20px) saturate(150%);
   padding: 10px;
@@ -25,7 +24,7 @@
 
 @media screen and (max-width: 767px) {
   .navbar {
-    display: none;
+    display: none !important;
   }
 }
 
@@ -83,7 +82,7 @@
 
 @media screen and (min-width: 768px) {
   .mobile-navbar {
-    display: none;
+    display: none !important;
   }
 }
 
