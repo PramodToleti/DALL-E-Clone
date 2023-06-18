@@ -101,12 +101,12 @@ const Navbar = () => {
         <p onClick={() => handleItemClick("generate", 0)}>Generate</p>
       </Link>
       <Link
-        to="/collections"
+        to="/community"
         className={`nav-link ${
-          activeItem === "collections" ? "active-link" : ""
+          activeItem === "community" ? "active-link" : ""
         }`}
       >
-        <p onClick={() => handleItemClick("collections", 0)}>Collections</p>
+        <p onClick={() => handleItemClick("community", 0)}>Community</p>
       </Link>
       <Link
         to="/profile"

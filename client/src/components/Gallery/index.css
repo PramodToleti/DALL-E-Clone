@@ -1215,3 +1215,26 @@
     height: 70px;
   }
 }
+
+.user {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  padding: 8px;
+  background: rgb(255, 255, 255);
+  backdrop-filter: blur(40px);
+  font-size: 10px;
+  cursor: pointer;
+}
+
+.user-inner {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #000;
+  text-decoration: none;
+}
+
+.linkedIn {
+  width: 20px;
+}

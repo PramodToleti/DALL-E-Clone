@@ -4,7 +4,7 @@ import { AnimatePresence } from "framer-motion"
 
 import Gallery from "../Gallery"
 import PromptField from "../PromptField"
-import Collections from "../Collections"
+import Community from "../Community"
 import Profile from "../Profile"
 import LoginPage from "../Login"
 
@@ -16,7 +16,7 @@ const AnimatedRoutes = () => {
         <Route exact path="/login" element={<LoginPage />} />
         <Route exact path="/" element={<Gallery />} />
         <Route exact path="/generate" element={<PromptField />} />
-        <Route exact path="/collections" element={<Collections />} />
+        <Route exact path="/community" element={<Community />} />
         <Route exact path="/profile" element={<Profile />} />
       </Routes>
     </AnimatePresence>

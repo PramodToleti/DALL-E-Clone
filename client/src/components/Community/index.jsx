@@ -1,7 +1,7 @@
 import React from "react"
 import { motion } from "framer-motion"
 
-const Collections = () => {
+const Community = () => {
   return (
     <motion.div
       initial={{ opacity: 0, x: -15 }}
@@ -9,9 +9,9 @@ const Collections = () => {
       exit={{ opacity: 0, x: 0 }}
       style={{ position: "absolute" }}
     >
-      Collections
+      Community
     </motion.div>
   )
 }
 
-export default Collections
+export default Community
