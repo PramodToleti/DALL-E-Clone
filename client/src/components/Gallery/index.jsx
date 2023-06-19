@@ -24,7 +24,6 @@ import sliderImg1 from "../../assets/carousel/generated1.png"
 import sliderImg2 from "../../assets/carousel/generated2.png"
 import sliderImg3 from "../../assets/carousel/generated3.png"
 import sliderImg4 from "../../assets/carousel/generated4.png"
-import linkedIn from "../../assets/linkedin.png"
 
 import DalleVideo from "../../assets/dalle_video.mp4"
 import DalleVideo2 from "../../assets/dalle_video2.mp4"
@@ -388,7 +387,7 @@ const Gallery = () => {
               }}
             >
               <div className="circle-text" ref={textRef}>
-                scroll down · scroll down · scroll down ·
+                scroll down · scroll down ·scroll down ·
               </div>
               <div className="arrow-icon">
                 <BsArrowDown />
@@ -673,6 +672,7 @@ const Gallery = () => {
           </div>
         </motion.div>
       </AnimatePresence>
+
       <div className="user">
         <a
           href="https://linkedin.com/in/pramodtoleti/"

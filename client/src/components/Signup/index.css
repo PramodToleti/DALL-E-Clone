@@ -1,0 +1,247 @@
+.login-container {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.login-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1000px;
+}
+
+@media screen and (min-width: 768px) {
+  .login-inner {
+    justify-content: space-between;
+  }
+}
+
+.logo {
+  width: 70px;
+  margin-bottom: 20px;
+}
+
+.login-form-container {
+  width: 100%;
+  max-width: 335px;
+}
+
+.login-form-container h1 {
+  margin-bottom: 10px;
+}
+
+.login-form-container p {
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+.input-container {
+  position: relative;
+  margin: 40px auto;
+}
+
+.input-container input[type="text"],
+.input-container input[type="password"],
+.input-container input[type="email"] {
+  font-size: 16px;
+  width: 100%;
+  border: none;
+  border-bottom: 2px solid #ccc;
+  padding: 5px 0;
+  background-color: transparent;
+  outline: none;
+}
+
+.input-container .label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: #ccc;
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+.input-container input[type="text"]:focus ~ .label,
+.input-container input[type="email"]:focus ~ .label,
+.input-container input[type="password"]:focus ~ .label,
+.input-container input[type="text"]:valid ~ .label,
+.input-container input[type="email"]:valid ~ .label,
+.input-container input[type="password"]:valid ~ .label {
+  top: -20px;
+  font-size: 16px;
+  color: #333;
+}
+
+.input-container .underline {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background-color: #333;
+  transform: scaleX(0);
+  transition: all 0.3s ease;
+}
+
+.input-container input[type="text"]:focus ~ .underline,
+.input-container input[type="email"]:focus ~ .underline,
+.input-container input[type="password"]:focus ~ .underline,
+.input-container input[type="text"]:valid ~ .underline,
+.input-container input[type="email"]:valid ~ .underline,
+.input-container input[type="password"]:valid ~ .underline {
+  transform: scaleX(1);
+}
+
+.login-btn {
+  height: 40px;
+  width: 100%;
+  border-radius: 30px;
+  color: #fff;
+  background-color: #202124;
+  font-weight: 500;
+  font-size: 16px;
+  font-family: sans-serif;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  margin-bottom: 22px;
+}
+
+.login-btn:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 7px 0 -2px #f85959, 0 15px 0 -4px #39a2db,
+    0 16px 10px -3px #39a2db;
+}
+
+.login-btn:active {
+  transition: all 0.2s;
+  transform: translateY(-5px);
+  box-shadow: 0 2px 0 -2px #f85959, 0 8px 0 -4px #39a2db,
+    0 12px 10px -3px #39a2db;
+}
+
+.already-text {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.login-text {
+  font-weight: 500;
+  cursor: pointer;
+  color: #000;
+  text-decoration: none;
+}
+
+.login-image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  background-image: url("https://res.cloudinary.com/dlpgowt5s/image/upload/v1687097515/gradient-pink-diamond-balls_fc99nr.jpg");
+  height: 550px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+}
+
+@media screen and (max-width: 767px) {
+  .login-image-container {
+    display: none;
+    color: #242424;
+  }
+}
+
+/* Loader */
+
+.assets-loading-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  min-width: 100vw;
+  background-color: #ffffff;
+  position: absolute;
+  z-index: 9999 !important;
+  transition: all 0.3s ease-in-out;
+}
+
+.loaded {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.assets-loader {
+  width: 64px;
+  height: 64px;
+  position: relative;
+  background: #fff;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 15px;
+}
+
+.assets-loader:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 40px;
+  height: 40px;
+  transform: rotate(45deg) translate(30%, 40%);
+  background: #787878;
+  box-shadow: 32px -34px 0 5px #575757;
+  animation: slide 2s infinite ease-in-out alternate;
+}
+
+.assets-loader:after {
+  content: "";
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #000;
+  transform: rotate(0deg);
+  transform-origin: 35px 145px;
+  animation: rotate 2s infinite ease-in-out;
+}
+
+@keyframes slide {
+  0%,
+  100% {
+    bottom: -35px;
+  }
+
+  25%,
+  75% {
+    bottom: -2px;
+  }
+
+  20%,
+  80% {
+    bottom: 2px;
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(-15deg);
+  }
+
+  25%,
+  75% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(25deg);
+  }
+}

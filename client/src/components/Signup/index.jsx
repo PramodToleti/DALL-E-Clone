@@ -6,20 +6,7 @@ import "./index.css"
 
 import logo from "../../assets/website.png"
 import GoogleAuth from "../GoogleAuth"
-
-const loginImages = [
-  "https://res.cloudinary.com/dlpgowt5s/image/upload/v1687159932/lamborghini-huracan-is-dark-street-city-min_shuy08.jpg",
-  "https://res.cloudinary.com/dlpgowt5s/image/upload/v1687159930/teenager-light-movie-projector-min_jpsruk.jpg",
-  "https://res.cloudinary.com/dlpgowt5s/image/upload/v1687159930/teenager-light-movie-projector-min_jpsruk.jpg",
-  "https://res.cloudinary.com/dlpgowt5s/image/upload/v1687159930/teenager-light-movie-projector-min_jpsruk.jpg",
-  "https://res.cloudinary.com/dlpgowt5s/image/upload/v1687159929/rise-humanoids-with-advanced-headgear-generative-ai-min_mby3sc.jpg",
-  "https://res.cloudinary.com/dlpgowt5s/image/upload/v1687159924/pink-diamond-background-round-shapes-min_os4puw.jpg",
-  "https://res.cloudinary.com/dlpgowt5s/image/upload/v1687159922/3d-rendering-abstract-flowing-shape-with-twisted-colorful-stripes-min_ajqelx.jpg",
-  "https://res.cloudinary.com/dlpgowt5s/image/upload/v1687159922/3d-rendered-abstract-design-elements-arrangement_1_-min_vlydtb.jpg",
-  "https://res.cloudinary.com/dlpgowt5s/image/upload/v1687158551/astronaut-explores-outer-dark-space-generative-al_sqsakr.jpg",
-  "https://res.cloudinary.com/dlpgowt5s/image/upload/v1687158541/view-adorable-3d-cats_seq70l.jpg",
-  "https://res.cloudinary.com/dlpgowt5s/image/upload/v1687158540/3d-view-holographic-layering_dp1gjm.jpg",
-]
+import loginImages from "../../LoginImages"
 
 const randomImage = loginImages[Math.floor(Math.random() * loginImages.length)]
 
@@ -27,12 +14,11 @@ const Loading = (className) => {
   return (
     <div className={`assets-loading-container ${className.className}`}>
       <div class="assets-loader"></div>
-      <p>Getting ready...</p>
+      <p>Igniting the imagination...</p>
     </div>
   )
 }
-
-const Login = () => {
+const SignUp = () => {
   const [userDetails, setUserDetails] = useState({})
   const [loading, setLoading] = useState(true)
 
@@ -41,18 +27,17 @@ const Login = () => {
       setLoading(false)
       document.getElementsByTagName("nav")[0].style.display = "none"
       document.querySelector(".mobile-navbar").style.display = "none"
-    }, 2000)
+      document.getElementsByClassName(
+        "login-image-container"
+      )[0].style.backgroundImage = `url(${randomImage})`
+    }, 3000)
 
     return () => {
       clearTimeout(timeId)
     }
   }, [])
 
-  useEffect(() => {
-    document.getElementsByClassName(
-      "login-image-container"
-    )[0].style.backgroundImage = `url(${randomImage})`
-  }, [])
+  useEffect(() => {}, [])
 
   const handleUserDetails = (e, type) => {
     if (type === "google") {
@@ -80,11 +65,22 @@ const Login = () => {
         <div className="login-inner">
           <div className="login-form-container">
             <img src={logo} alt="logo" className="logo" />
-            <h1>
-              Welcome Back <span className="wave">👋</span>
-            </h1>
-            <p>Let's pick up where you left off .</p>
+            <h1>Create an account</h1>
+            <p>Let's get started with your free trail.</p>
             <form className="login-form" onSubmit={handleSubmit}>
+              <div className="input-container">
+                <input
+                  type="text"
+                  id="name"
+                  required
+                  onChange={(e) => handleUserDetails(e)}
+                />
+                <label htmlFor="name" className="label">
+                  Name
+                </label>
+                <div className="underline"></div>
+              </div>
+
               <div className="input-container">
                 <input
                   type="email"
@@ -112,21 +108,21 @@ const Login = () => {
               </div>
 
               <button type="submit" className="login-btn">
-                Login
+                Create account
               </button>
 
               {
                 <GoogleAuth
                   handleUserDetails={handleUserDetails}
-                  text={"signin_with"}
+                  text={"signup_with"}
                 />
               }
             </form>
 
             <p className="already-text">
-              Don't have an account'?{" "}
-              <Link to="/signup" className="login-text">
-                <span className="login-text">Sign up</span>
+              Already have an account?{" "}
+              <Link to="/login" className="login-text">
+                <span className="login-text">Log in</span>
               </Link>
             </p>
           </div>
@@ -137,4 +133,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default SignUp

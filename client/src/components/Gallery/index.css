@@ -625,8 +625,8 @@
 }
 
 .circle-text {
-  font-size: 14px;
-  animation: rotate 8s linear infinite;
+  font-size: 12px;
+  animation: rotate 8s linear infinite forwards;
   color: #000;
 }
 

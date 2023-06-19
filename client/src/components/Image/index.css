@@ -4,6 +4,7 @@
   height: 100%;
   width: 49%;
   margin-bottom: 10px;
+  overflow: hidden;
 }
 
 img {
@@ -29,8 +30,9 @@ img {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  height: 100%;
   overflow: hidden;
+  height: 100%;
+  box-sizing: border-box;
 }
 
 .image-overlay-button {
@@ -56,4 +58,5 @@ img {
 .image-overlay.hover {
   opacity: 1;
   height: 100%;
+  box-sizing: border-box;
 }
