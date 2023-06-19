@@ -11,6 +11,7 @@ import SwiperCore, { EffectCoverflow, Pagination } from "swiper"
 import { Swiper, SwiperSlide } from "swiper/react"
 import ReactTypingEffect from "react-typing-effect"
 import { useInView } from "react-intersection-observer"
+import Cookies from "js-cookie"
 
 import "./index.css"
 import "swiper/swiper-bundle.min.css"
@@ -62,6 +63,11 @@ const Gallery = () => {
   const [hasViewed, setHasViewed] = useState(false)
   const [loading, setLoading] = useState(false)
   const [loaded, setLoaded] = useState(false)
+
+  const token = Cookies.get("token")
+  if (!token) {
+    window.location.href = "/signup"
+  }
 
   if (inView && !hasViewed) {
     setHasViewed(true)

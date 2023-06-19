@@ -1,6 +1,7 @@
 import React from "react"
 import { Routes, Route, useLocation } from "react-router-dom"
 import { AnimatePresence } from "framer-motion"
+/* import ProtectedRoute from "../ProtectedRoute" */
 
 import Gallery from "../Gallery"
 import PromptField from "../PromptField"

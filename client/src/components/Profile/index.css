@@ -1,0 +1,81 @@
+.profile-container {
+  display: flex;
+  min-height: 100vh;
+  width: 100vw;
+  position: relative;
+  padding: 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .profile-container {
+    top: 50px;
+    padding: 80px;
+  }
+}
+
+.profile-inner {
+  width: 100%;
+}
+
+.avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin: 0 auto;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.details-container {
+  margin-top: 30px;
+  margin-left: 20px;
+  display: flex;
+  height: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  .details-container {
+    margin-top: 50px;
+  }
+}
+
+.side-bar {
+  margin-right: 30px;
+  width: 200px;
+  border-right: 1px solid #ccc;
+}
+
+.user-details {
+  margin-bottom: 30px;
+}
+
+.user-details h3 {
+  margin-bottom: 15px;
+}
+
+.user-details p {
+  border: 1px solid #ccc;
+  padding: 10px;
+  padding-left: 20px;
+  text-align: start;
+  border-radius: 6px;
+  min-width: 200px;
+}
+
+.details-btn button {
+  height: 38px;
+  width: 75px;
+  margin-right: 20px;
+  border: none;
+  border-radius: 6px;
+}
+
+.details-btn button:first-child {
+  background-color: #69b16d;
+  color: #fff;
+}
+
+.details-btn button:last-child {
+  background-color: #de5865;
+  color: #fff;
+}

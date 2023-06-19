@@ -6,6 +6,7 @@ import { AiOutlineHeart, AiFillHeart } from "react-icons/ai"
 import { RiShareForwardFill } from "react-icons/ri"
 import { ToastContainer, toast } from "react-toastify"
 import Joyride from "react-joyride"
+import Cookies from "js-cookie"
 
 import surprisePrompts from "../../surprise-prompts"
 import tips from "../../tips"
@@ -30,8 +31,6 @@ const steps = [
 const displayOnboard =
   localStorage.getItem("onboarding") === null ? true : false
 
-console.log(displayOnboard)
-
 const PromptField = () => {
   const location = useLocation()
   const [isFocused, setFocused] = useState(false)
@@ -45,6 +44,11 @@ const PromptField = () => {
   const [favoriteImages, setFavoriteImages] = useState([])
   const [isLoading, setIsLoading] = useState(false)
   const [onboard, setDisplayOnboard] = useState(true)
+
+  const token = Cookies.get("token")
+  if (!token) {
+    window.location.href = "/signup"
+  }
 
   useEffect(() => {
     const inputDiv = document.getElementById("input-div")

@@ -1,32 +1,23 @@
 import React, { useEffect, useState } from "react"
 import { motion } from "framer-motion"
-import { Link } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
+import { Oval } from "react-loader-spinner"
+import { ToastContainer, toast } from "react-toastify"
+import Cookies from "js-cookie"
 
 import "./index.css"
+import "react-toastify/dist/ReactToastify.css"
 
 import logo from "../../assets/website.png"
 import GoogleAuth from "../GoogleAuth"
+import loginImages from "../../LoginImages"
 
-const loginImages = [
-  "https://res.cloudinary.com/dlpgowt5s/image/upload/v1687159932/lamborghini-huracan-is-dark-street-city-min_shuy08.jpg",
-  "https://res.cloudinary.com/dlpgowt5s/image/upload/v1687159930/teenager-light-movie-projector-min_jpsruk.jpg",
-  "https://res.cloudinary.com/dlpgowt5s/image/upload/v1687159930/teenager-light-movie-projector-min_jpsruk.jpg",
-  "https://res.cloudinary.com/dlpgowt5s/image/upload/v1687159930/teenager-light-movie-projector-min_jpsruk.jpg",
-  "https://res.cloudinary.com/dlpgowt5s/image/upload/v1687159929/rise-humanoids-with-advanced-headgear-generative-ai-min_mby3sc.jpg",
-  "https://res.cloudinary.com/dlpgowt5s/image/upload/v1687159924/pink-diamond-background-round-shapes-min_os4puw.jpg",
-  "https://res.cloudinary.com/dlpgowt5s/image/upload/v1687159922/3d-rendering-abstract-flowing-shape-with-twisted-colorful-stripes-min_ajqelx.jpg",
-  "https://res.cloudinary.com/dlpgowt5s/image/upload/v1687159922/3d-rendered-abstract-design-elements-arrangement_1_-min_vlydtb.jpg",
-  "https://res.cloudinary.com/dlpgowt5s/image/upload/v1687158551/astronaut-explores-outer-dark-space-generative-al_sqsakr.jpg",
-  "https://res.cloudinary.com/dlpgowt5s/image/upload/v1687158541/view-adorable-3d-cats_seq70l.jpg",
-  "https://res.cloudinary.com/dlpgowt5s/image/upload/v1687158540/3d-view-holographic-layering_dp1gjm.jpg",
-]
-
-const randomImage = loginImages[Math.floor(Math.random() * loginImages.length)]
+var randomImage
 
 const Loading = (className) => {
   return (
     <div className={`assets-loading-container ${className.className}`}>
-      <div class="assets-loader"></div>
+      <div className="assets-loader"></div>
       <p>Getting ready...</p>
     </div>
   )
@@ -35,6 +26,19 @@ const Loading = (className) => {
 const Login = () => {
   const [userDetails, setUserDetails] = useState({})
   const [loading, setLoading] = useState(true)
+  const [btnLoad, setBtnLoad] = useState(false)
+  const location = useLocation()
+  const pathName = location.pathname.split("/")[1]
+
+  const token = Cookies.get("token")
+  if (token) {
+    window.location.href = "/"
+  }
+
+  //get random image for login page
+  useEffect(() => {
+    randomImage = loginImages[Math.floor(Math.random() * loginImages.length)]
+  }, [pathName])
 
   useEffect(() => {
     const timeId = setTimeout(() => {
@@ -62,14 +66,40 @@ const Login = () => {
     setUserDetails({ ...userDetails, [e.target.id]: e.target.value })
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    localStorage.setItem("userDetails", JSON.stringify(userDetails))
-    window.location.href = "/"
+    setBtnLoad(true)
+
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(userDetails),
+    }
+
+    const response = await fetch("http://localhost:5000/login", options)
+    const data = await response.json()
+    console.log(data)
+
+    if (response.ok) {
+      setBtnLoad(false)
+      Cookies.set("token", data.token)
+      localStorage.setItem("userDetails", JSON.stringify(data))
+      window.location.href = "/"
+    } else {
+      setBtnLoad(false)
+      toast.error(data.error, {
+        position: "top-center",
+        autoClose: 2000,
+        pauseOnHover: false,
+      })
+    }
   }
 
   return (
     <>
+      <ToastContainer />
       <Loading className={loading ? "loading" : "loaded"} />
       <motion.div
         className="login-container"
@@ -112,7 +142,22 @@ const Login = () => {
               </div>
 
               <button type="submit" className="login-btn">
-                Login
+                {btnLoad ? (
+                  <Oval
+                    height={30}
+                    width={30}
+                    color="white"
+                    wrapperStyle={{}}
+                    wrapperClass=""
+                    visible={true}
+                    ariaLabel="oval-loading"
+                    secondaryColor="#ffffff"
+                    strokeWidth={2}
+                    strokeWidthSecondary={2}
+                  />
+                ) : (
+                  <span>Login</span>
+                )}
               </button>
 
               {

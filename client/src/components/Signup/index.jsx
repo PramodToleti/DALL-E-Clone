@@ -1,26 +1,44 @@
 import React, { useEffect, useState } from "react"
 import { motion } from "framer-motion"
-import { Link } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
+import { Oval } from "react-loader-spinner"
+import Cookies from "js-cookie"
+import { ToastContainer, toast } from "react-toastify"
 
 import "./index.css"
+import "react-toastify/dist/ReactToastify.css"
 
 import logo from "../../assets/website.png"
 import GoogleAuth from "../GoogleAuth"
 import loginImages from "../../LoginImages"
 
-const randomImage = loginImages[Math.floor(Math.random() * loginImages.length)]
-
 const Loading = (className) => {
   return (
     <div className={`assets-loading-container ${className.className}`}>
-      <div class="assets-loader"></div>
+      <div className="assets-loader"></div>
       <p>Igniting the imagination...</p>
     </div>
   )
 }
+
+var randomImage
+
 const SignUp = () => {
   const [userDetails, setUserDetails] = useState({})
   const [loading, setLoading] = useState(true)
+  const location = useLocation()
+  const pathName = location.pathname.split("/")[1]
+  const [btnLoad, setBtnLoad] = useState(false)
+
+  const token = Cookies.get("token")
+  if (token) {
+    window.location.href = "/"
+  }
+
+  //get random image for signup page
+  useEffect(() => {
+    randomImage = loginImages[Math.floor(Math.random() * loginImages.length)]
+  }, [pathName])
 
   useEffect(() => {
     const timeId = setTimeout(() => {
@@ -47,14 +65,40 @@ const SignUp = () => {
     setUserDetails({ ...userDetails, [e.target.id]: e.target.value })
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    localStorage.setItem("userDetails", JSON.stringify(userDetails))
-    window.location.href = "/"
+    setBtnLoad(true)
+
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(userDetails),
+    }
+
+    const response = await fetch("http://localhost:5000/signup", options)
+    const data = await response.json()
+    console.log(data)
+
+    if (response.ok) {
+      setBtnLoad(false)
+      Cookies.set("token", data.token)
+      localStorage.setItem("userDetails", JSON.stringify(data))
+      window.location.href = "/"
+    } else {
+      setBtnLoad(false)
+      toast.error(data.error, {
+        position: "top-center",
+        autoClose: 2000,
+        pauseOnHover: false,
+      })
+    }
   }
 
   return (
     <>
+      <ToastContainer />
       <Loading className={loading ? "loading" : "loaded"} />
       <motion.div
         className="login-container"
@@ -108,7 +152,22 @@ const SignUp = () => {
               </div>
 
               <button type="submit" className="login-btn">
-                Create account
+                {btnLoad ? (
+                  <Oval
+                    height={30}
+                    width={30}
+                    color="white"
+                    wrapperStyle={{}}
+                    wrapperClass=""
+                    visible={true}
+                    ariaLabel="oval-loading"
+                    secondaryColor="#ffffff"
+                    strokeWidth={2}
+                    strokeWidthSecondary={2}
+                  />
+                ) : (
+                  <span>Sign up</span>
+                )}
               </button>
 
               {
