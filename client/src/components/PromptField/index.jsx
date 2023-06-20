@@ -111,7 +111,7 @@ const PromptField = () => {
   const generateImage = () => {
     if (promptValue === "") return
     setIsLoading(true)
-    /* async function fetchImage() {
+    async function fetchImage() {
       const url = `http://localhost:5000/generate`
       const options = {
         method: "POST",
@@ -133,7 +133,7 @@ const PromptField = () => {
       }
     }
 
-    fetchImage() */
+    fetchImage()
   }
 
   const generateBtnStyles = promptValue !== "" ? "generate-btn-active" : ""

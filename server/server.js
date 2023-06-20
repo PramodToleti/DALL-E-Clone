@@ -43,34 +43,6 @@ app.get("/", (_, res) => {
   res.send("Hello from server")
 })
 
-app.post("/generate", async (req, res) => {
-  try {
-    const options = {
-      method: "POST",
-      url: "https://openai80.p.rapidapi.com/images/generations",
-      headers: {
-        "content-type": "application/json",
-        "Accept-Encoding": "application/json",
-        "X-RapidAPI-Key": process.env.X_RapidAPI_Key,
-        "X-RapidAPI-Host": "openai80.p.rapidapi.com",
-      },
-      data: {
-        prompt: req.body.prompt, // Get the prompt from the request body
-        n: 1,
-        size: "1024x1024",
-      },
-    }
-
-    const response = await axios.request(options)
-    console.log(response.data)
-
-    res.status(200).json(response.data) // Send the generated response back to the client
-  } catch (error) {
-    console.error(error)
-    res.status(500).json({ error: "An error occurred" })
-  }
-})
-
 app.post("/signup", async (req, res) => {
   const { name, email, password, type } = req.body
 
@@ -182,6 +154,34 @@ app.post("/login", async (req, res) => {
         }
       }
     }
+  } catch (error) {
+    console.error(error)
+    res.status(500).json({ error: "An error occurred" })
+  }
+})
+
+app.post("/generate", async (req, res) => {
+  try {
+    const options = {
+      method: "POST",
+      url: "https://openai80.p.rapidapi.com/images/generations",
+      headers: {
+        "content-type": "application/json",
+        "Accept-Encoding": "application/json",
+        "X-RapidAPI-Key": process.env.X_RapidAPI_Key,
+        "X-RapidAPI-Host": "openai80.p.rapidapi.com",
+      },
+      data: {
+        prompt: req.body.prompt, // Get the prompt from the request body
+        n: 3,
+        size: "1024x1024",
+      },
+    }
+
+    const response = await axios.request(options)
+    console.log(response.data)
+
+    res.status(200).json(response.data) // Send the generated response back to the client
   } catch (error) {
     console.error(error)
     res.status(500).json({ error: "An error occurred" })

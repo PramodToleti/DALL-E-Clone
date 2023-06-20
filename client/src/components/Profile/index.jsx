@@ -2,6 +2,7 @@ import React from "react"
 import { motion } from "framer-motion"
 
 import "./index.css"
+import Cookies from "js-cookie"
 
 const Profile = () => {
   return (
@@ -44,7 +45,14 @@ const Profile = () => {
                 <button type="button" className="btn btn-primary">
                   Edit
                 </button>
-                <button type="button" className="btn btn-danger">
+                <button
+                  type="button"
+                  className="btn btn-danger"
+                  onClick={() => {
+                    Cookies.remove("token")
+                    window.location.href = "/login"
+                  }}
+                >
                   Logout
                 </button>
               </div>
