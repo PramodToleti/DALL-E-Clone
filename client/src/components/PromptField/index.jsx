@@ -35,12 +35,9 @@ const PromptField = () => {
   const location = useLocation()
   const [isFocused, setFocused] = useState(false)
   const [promptValue, setPromptValue] = useState(location.state?.prompt || "")
-  const [generatedImages, setGeneratedImages] = useState([
-    /* {
-      url: "https://oaidalleapiprodscus.blob.core.windows.net/private/org-3PqyQYra9LvRBGRfWOtjNN7f/user-OQ7jGQ6LMuEE8JALwQ9A4lMI/img-TtZyOZ9pFM6jcgmAQsqChqkz.png?st=2023-06-18T03%3A07%3A11Z&se=2023-06-18T05%3A07%3A11Z&sp=r&sv=2021-08-06&sr=b&rscd=inline&rsct=image/png&skoid=6aaadede-4fb3-4698-a8f6-684d7786b067&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2023-06-17T20%3A55%3A36Z&ske=2023-06-18T20%3A55%3A36Z&sks=b&skv=2021-08-06&sig=7WdbfXrr0pwQ0pebE8yIZrWFuqnTN0ls2YnNOuI9NQQ%3D",
-    }, */
-  ])
+  const [generatedImages, setGeneratedImages] = useState([])
   const [favorite, setFavorite] = useState(false)
+  const [favIndex, setFavIndex] = useState(null)
   const [favoriteImages, setFavoriteImages] = useState([])
   const [isLoading, setIsLoading] = useState(false)
   const [onboard, setDisplayOnboard] = useState(true)
@@ -112,7 +109,7 @@ const PromptField = () => {
     if (promptValue === "") return
     setIsLoading(true)
     async function fetchImage() {
-      const url = `http://localhost:5000/generate`
+      const url = `https://dalle-clone-backend-l19g.onrender.com/generate`
       const options = {
         method: "POST",
         headers: {
@@ -248,11 +245,12 @@ const PromptField = () => {
                         onClick={() => handleDownload(image.url)}
                       />
                       <div className="image-btns-container">
-                        {favorite ? (
+                        {favorite && favIndex === index ? (
                           <AiFillHeart
                             className="heart-btn"
                             onClick={() => {
                               setFavorite(false)
+                              setFavIndex(index)
                               setFavoriteImages(
                                 favoriteImages.filter(
                                   (img) => img.url !== image.url
@@ -274,6 +272,7 @@ const PromptField = () => {
                             className="favorite-btn"
                             onClick={() => {
                               setFavorite(true)
+                              setFavIndex(index)
                               setFavoriteImages((prev) => [...prev, image])
                               toast.success("Added to favorites", {
                                 position: "top-center",

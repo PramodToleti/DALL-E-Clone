@@ -78,7 +78,10 @@ const Login = () => {
       body: JSON.stringify(userDetails),
     }
 
-    const response = await fetch("http://localhost:5000/login", options)
+    const response = await fetch(
+      "https://dalle-clone-backend-l19g.onrender.com/login",
+      options
+    )
     const data = await response.json()
     console.log(data)
 
